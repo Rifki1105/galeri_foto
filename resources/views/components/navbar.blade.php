@@ -13,9 +13,6 @@
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
             </div>
             <a href="{{ route('login') }}" class="btn btn-info text-white">Login</a>
-            <div class="navbar-nav">
-                <a href="{{ route('register') }}" class="nav-link">Register</a>
-            </div>
         </div>
     </div>
 </nav>

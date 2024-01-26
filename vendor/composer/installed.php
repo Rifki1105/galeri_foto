@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'laravel/laravel',
-        'pretty_version' => 'v10.3.2',
-        'version' => '10.3.2.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '47ade0bd5562c6f43682ac812805f17dfa245b2e',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -380,9 +380,9 @@
             'dev_requirement' => false,
         ),
         'laravel/laravel' => array(
-            'pretty_version' => 'v10.3.2',
-            'version' => '10.3.2.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '47ade0bd5562c6f43682ac812805f17dfa245b2e',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -757,8 +757,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '3.0.0',
+                0 => '3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -809,6 +809,15 @@
             'reference' => '5f0df49ae5ad6efb7afa69e6bfab4e5b1e080d8e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../ramsey/uuid',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'realrashid/sweet-alert' => array(
+            'pretty_version' => 'v7.1.0',
+            'version' => '7.1.0.0',
+            'reference' => '769f951053cd3363fd7fb7a1dd30f9828b619b44',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../realrashid/sweet-alert',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
