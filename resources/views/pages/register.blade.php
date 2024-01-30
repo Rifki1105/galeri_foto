@@ -16,14 +16,16 @@
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="nis" placeholder="Masukan Email">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukan Email">
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Masukan Password">
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder="Masukan Password">
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mb-3 mt-3">Register</button>
-                <p class="text-center mb-0">Sudah punya akun? <a href="{{ route('login') }}" class="text-decoration-none">Masuk</a></p>
+                <p class="text-center mb-0">Sudah punya akun? <a href="{{ route('login') }}"
+                        class="text-decoration-none">Masuk</a></p>
             </form>
         </div>
     </div>

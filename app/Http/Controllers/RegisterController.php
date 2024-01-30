@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+// use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -13,6 +16,26 @@ class RegisterController extends Controller
 
     public function processRegister(Request $request)
     {
-        dd($request->all());
+        $request->validate([
+            'nama' => ['required', 'string', 'max:225'],
+            'nis' => ['required', 'integer', 'min:9', 'unique:users,nis'],
+            'email' => ['required', 'email', 'unique:users,email'],
+            'password' => ['required', 'string', 'min:3']
+        ]);
+
+        $user = User::create([
+            'nama' => $request->nama,
+            'nis' => $request->nis,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+
+        if ($user) {
+            Alert::success('Register berhasil silakan login');
+            return redirect()->route('login');
+        } else {
+            Alert::error('Register gagal silahkan coba lagi');
+            return redirect()->back();
+        }
     }
 }

@@ -15,7 +15,7 @@
                     <input type="password" class="form-control" id="password" placeholder="Masukan Password">
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mb-3 mt-3">Login</button>
-                <p class="text-center mb-0">Belum punya akun? <a href="{{ route('register') }}" class="text-decoration-none">daftar</a></p>
+                <p class="text-center mb-0">Belum punya akun? <a href="/register" class="text-decoration-none">daftar</a></p>
             </form>
         </div>
     </div>
