@@ -12,7 +12,7 @@
                 <a class="nav-link" href="#">Pricing</a>
                 <a class="nav-link disabled" aria-disabled="true">Disabled</a>
             </div>
-            <a href="{{ route('login') }}" class="btn btn-info text-white">Login</a>
+            <a href="{{ route('login.index') }}" class="btn btn-info text-white">Login</a>
         </div>
     </div>
 </nav>
