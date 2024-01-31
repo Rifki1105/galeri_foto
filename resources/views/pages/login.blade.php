@@ -8,11 +8,17 @@
                 @csrf
                 <div class="mb-3">
                     <label for="nis" class="form-label">NIS</label>
-                    <input type="number" class="form-control" id="nis" name="nis" placeholder="Masukan NIS">
+                    <input type="number" class="form-control @error('nis') is-invalid @enderror" id="nis" name="nis" placeholder="Masukan NIS">
+                    @error('nis')
+                        <div class="invalid-feeback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Masukan Password">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Masukan Password">
+                    @error('password')
+                        <div class="invalid-feeback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mb-3 mt-3">Login</button>
                 <p class="text-center mb-0">Belum punya akun? <a href="/register" class="text-decoration-none">daftar</a></p>
