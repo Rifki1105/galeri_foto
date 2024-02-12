@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-// use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -32,7 +31,7 @@ class RegisterController extends Controller
 
         if ($user) {
             Alert::success('Register berhasil silakan login');
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         } else {
             Alert::error('Register gagal silahkan coba lagi');
             return redirect()->back();

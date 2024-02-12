@@ -17,7 +17,7 @@ class LoginController extends Controller
     {
         $request->validate([
             'nis' => ['required', 'integer', 'exists:users,nis'],
-            'password' => ['required', 'string',]
+            'password' => ['required', 'string']
         ]);
 
         $credentials = $request->only('nis', 'password');
