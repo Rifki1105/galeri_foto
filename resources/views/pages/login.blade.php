@@ -10,7 +10,7 @@
                     <label for="nis" class="form-label">NIS</label>
                     <input type="number" class="form-control @error('nis') is-invalid @enderror" id="nis" name="nis" placeholder="Masukan NIS">
                     @error('nis')
-                        <div class="invalid-feeback">{{ $message }}</div>
+                        <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
                 <div class="mb-3">

@@ -15,7 +15,8 @@
                 <a href="{{ route('login.index') }}" class="btn btn-info text-white">Login</a>
             @else
                 <div class="dropdown">
-                    <a class="btn text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="btn text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
                         {{ Auth::User()->nama }}
                     </a>
                     <ul class="dropdown-menu">
