@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,9 +19,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-})->name('home');
+Route::get('/', [PhotoController::class, 'home'])->name('home');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login.index');
 Route::post('/login', [LoginController::class, 'processLogin'])->name('login.process');
@@ -32,3 +32,16 @@ Route::get('/logout', function () {
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
 Route::post('/register', [RegisterController::class, 'processRegister'])->name('register.process');
+
+// Route::get('/home', function () {
+//     return view('pages.home');
+// })->name('home');
+// Route::get('/photo/post', function () {
+//     return view('pages.post_photo');
+// })->name('post_photo');
+
+Route::controller(PhotoController::class)->middleware('auth')->name('photo.')->group(function () {
+    Route::get('/photo/{photo_id}', 'index')->name('index');
+    Route::get('/post', 'postPhoto')->name('post');
+    Route::post('/post', 'postPhotoProcess')->name('postProcess');
+});
