@@ -13,13 +13,13 @@ class PhotoController extends Controller
     public function index($photo_id)
     {
         $data = Photo::with('user')
-        ->with('comments')
-        ->withCount('likes')
-        ->withExists('likedByUser', function ($query) {
-            $query->where('user_id', auth()->user()->id);
-        })
-        ->find($photo_id);
-    return view('pages.photo', compact('data'));
+            ->with('comments')
+            ->withCount('likes')
+            ->withExists('likedByUser', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            })
+            ->find($photo_id);
+        return view('pages.photo', compact('data'));
     }
 
 
@@ -67,5 +67,4 @@ class PhotoController extends Controller
             return redirect()->back();
         }
     }
-
 }

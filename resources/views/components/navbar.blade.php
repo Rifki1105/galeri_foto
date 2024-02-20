@@ -17,12 +17,10 @@
                 <div class="dropdown">
                     <a class="btn text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        {{-- <img src="{{ asset('photo/haikal.png') }}" alt="" class="rounded-circle"
-                            style="width: 50px; height: 50px;"> --}}
                         {{ Auth::User()->nama }}
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('home') }}">Profil</a></li>
+                        <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profil</a></li>
                         <li><a class="dropdown-item" href="{{ route('photo.post') }}">Post</a></li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}">Keluar</a></li>
                     </ul>
