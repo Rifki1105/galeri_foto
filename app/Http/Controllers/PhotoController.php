@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Photo;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PhotoController extends Controller
@@ -39,7 +40,7 @@ class PhotoController extends Controller
     public function postPhotoProcess(Request $request)
     {
         $request->validate([
-            'photo' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:4096'],
+            'photo' => ['required', 'image', 'mimes:jpg,png,jpeg', 'max:100000000'],
             'judul_foto' => ['required', 'max:255'],
             'deskripsi_foto' => ['required', 'min:3'],
         ]);
@@ -66,5 +67,43 @@ class PhotoController extends Controller
             Storage::delete($photo_path);
             return redirect()->back();
         }
+    }
+
+    public function updatePhoto(Request $request, $photo_id)
+    {
+        $photo = Photo::findOrFail($photo_id);
+
+        if (Auth::user()->id != $photo->user_id) {
+
+
+            Alert::error('Anda tidak memiliki akses!');
+            return redirect()->back();
+        }
+
+        $photo->judul_foto = $request->judul_foto;
+        $photo->deskripsi_foto = $request->deskripsi_foto;
+        $photo->update();
+
+        Alert::success('Foto berhasil diupdate!');
+        return redirect()->back();
+    }
+
+    public function deletePhoto($photo_id)
+    {
+        $photo = Photo::findOrFail($photo_id);
+
+        if (Auth::user()->id != $photo->user_id) {
+            Alert::error('Anda tidak memiliki akses!');
+            return redirect()->back();
+        }
+
+        if (file_exists(public_path('storage/' . $photo->lokasi_file))) {
+            unlink(public_path('storage/' . $photo->lokasi_file));
+        }
+
+        $photo->delete();
+        Alert::success('Foto berhasil dihapus!');
+
+        return redirect()->route('home');
     }
 }

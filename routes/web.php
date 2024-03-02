@@ -39,6 +39,8 @@ Route::controller(PhotoController::class)->middleware('auth')->name('photo.')->g
     Route::get('/photo/{photo_id}', 'index')->name('index');
     Route::get('/post', 'postPhoto')->name('post');
     Route::post('/post', 'postPhotoProcess')->name('postProcess');
+    Route::put('/photo/{photo_id}', 'updatePhoto')->name('update');
+Route::delete('/photo/{photo_id}', 'deletePhoto')->name('delete');
 });
 
 Route::controller(LikePhotoController::class)->middleware('auth')->name('like_photo.')->group(function () {
@@ -48,9 +50,12 @@ Route::controller(LikePhotoController::class)->middleware('auth')->name('like_ph
 
 Route::controller(CommentController::class)->middleware('auth')->name('comment.')->group(function () {
     Route::post('/comment', 'post')->name('post');
+    Route::put('/comment/{comment_id}', 'updateComment')->name('update');
+Route::delete('/comment/{comment_id}', 'deleteComment')->name('delete');
 });
 
-Route::controller(ProfileController::class)->name('profile.')->group(function() {
+Route::controller(ProfileController::class)->name('profile.')->group(function () {
     Route::get('/profile', 'index')->name('index');
-    Route::get('/profile/{user_id}', 'people' )->name('people');
+    Route::get('/profile/{user_id}', 'people')->name('people');
+    Route::put('/profile', 'updateProfile')->name('update');
 });

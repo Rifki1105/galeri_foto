@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CommentPhoto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class CommentController extends Controller
@@ -30,5 +31,34 @@ class CommentController extends Controller
             Alert::error('Komentar gagal di-posting!');
             return redirect()->back();
         }
+    }
+
+    public function updateComment(Request $request, $comment_id)
+    {
+        $comment = CommentPhoto::find($comment_id);
+
+        if (Auth::user()->id != $comment->user_id) {
+            Alert::error('Anda tidak memiliki akses!');
+            return redirect()->back();
+        }
+
+        $comment->isi_komentar = $request->isi_komentar;
+        $comment->update();
+
+        Alert::success('Komentar berhasil diupdate!');
+        return redirect()->back();
+    }
+
+    public function deleteComment($comment_id)
+    {
+        $comment = CommentPhoto::find($comment_id)->first();
+        if (Auth::user()->id != $comment->user_id) {
+            Alert::error('Anda tidak memiliki akses!');
+            return redirect()->back();
+        }
+        
+        $comment->delete();
+        Alert::success('Komentar berhasil dihapus!');
+        return redirect()->back();
     }
 }
